@@ -1,7 +1,3 @@
-This is a private repository so Amaka and Bethany can collaborate on the code for the wait time analysis paper. Once it's ready, we can copy it into a public repository.
-
-We should both use branches in order to make edits and then create merge requests that the other person reviews. That way, all code is checked by two people.
-
 # Workflow
 ## Step 1: Stack Raw Data 
 Stack the CSVs together - this only has to happen once.
