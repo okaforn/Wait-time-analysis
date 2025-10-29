@@ -39,7 +39,7 @@ Then save the final data for training/testing: `Theta_X_train.csv`, `Theta_y_tra
 Notebooks: `Training_Data_Prep_Theta.ipynb` and `Training_Data_Prep_Polaris.ipynb`.
 
 ## Step 5: Train Models
-Notebooks: `Queue_wait_time_prediction_polaris.ipynb` and `Wait_time_prediction_Theta.ipynb`
+Notebooks: `Queue_wait_time_prediction_Theta.ipynb` and `Queue_wait_time_prediction_polaris.ipynb`
 
 
 
