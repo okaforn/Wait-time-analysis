@@ -1,3 +1,8 @@
+This is code for the paper "Queue wait time prediction in High Performance Computing
+(HPC) systems" by Nwamaka Okafor, Bethany Lusch, and Venkatram Vishwanath at Argonne Leadership Computing Facility. 
+
+The datasets are available at https://reports.alcf.anl.gov/data/. Specifically, for Theta, we used DIM_JOB_COMPOSITE for 2017-2023, and for Polaris, we used DIM_JOB_COMPOSITE for 2022-2024.
+
 # Workflow
 ## Step 1: Stack Raw Data 
 Stack the CSVs together - this only has to happen once.
@@ -34,7 +39,7 @@ Load the "engineered" data again and apply more transformations to make it ready
 - Remove outliers from the training data.
 - Plot a correlation matrix on the training data (without outliers).
 - Select features using PCA + clustering.
-Then save the final data for training/testing: `Theta_X_train.csv`, `Theta_y_train.csv`, `Theta_X_test.csv`, `Theta_y_test.csv` and the equivalents for Polaris.
+Then save the final data for training/evaluation/testing: `Theta_X_train.csv`, `Theta_y_train.csv`, `Theta_X_test.csv`, `Theta_y_test.csv`, etc. and the equivalents for Polaris.
 
 Notebooks: `Training_Data_Prep_Theta.ipynb` and `Training_Data_Prep_Polaris.ipynb`.
 
@@ -42,5 +47,9 @@ Notebooks: `Training_Data_Prep_Theta.ipynb` and `Training_Data_Prep_Polaris.ipyn
 Notebooks: `Queue_wait_time_prediction_Theta.ipynb` and `Queue_wait_time_prediction_polaris.ipynb`
 
 
-
+# Acknowledgments
+This research was funded by and used resources of the
+Argonne Leadership Computing Facility, which is a DOE
+Office of Science User Facility supported under Contract DE-
+AC02-06CH11357.
 
