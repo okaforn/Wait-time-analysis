@@ -63,22 +63,6 @@ def feature_engineering(df, prefix):
     # 1. How many jobs are currently running at the time the new job was queued
     # 2. How many jobs are queued( but not yet started) at the time this job was queued
    
-    '''
-    running_jobs = []
-    queued_but_not_started = []
-
-    for i, queued_time in enumerate(df['QUEUED_TIMESTAMP']):
-        # Count jobs running at the time this job was queued
-        running_count = ((df['START_TIMESTAMP'] <= queued_time) & (df['END_TIMESTAMP'] > queued_time)).sum()
-        running_jobs.append(running_count)
-
-        # Count jobs queued but not yet started at the time this job was queued
-        queued_count = ((df['QUEUED_TIMESTAMP'] <= queued_time) & (df['START_TIMESTAMP'] > queued_time)).sum()
-        queued_but_not_started.append(queued_count)
-
-    df['JOBS_RUNNING'] = running_jobs
-    df['JOBS_QUEUED'] = queued_but_not_started'''
-
     queued = df['QUEUED_TIMESTAMP'].values
     start = np.sort(df['START_TIMESTAMP'].values)
     end = np.sort(df['END_TIMESTAMP'].values)
@@ -168,26 +152,7 @@ def encode_categorical_variables(df):
 
     return df
 
-'''
-def split_dataset(df):
-    # Randomly split the dataset into training and test sets 
-    train_set, test_set = train_test_split(df, test_size=0.2, random_state=42)
 
-    print(f'Train_set: {train_set.shape[0]}')
-    print(f'Test_set: {test_set.shape[0]}')
-
-    # Get features and target variable
-    # can drop QUEUED_TIMESTAMP later (keeping it now for the sake of the plot below)
-    X_train = train_set.drop(['ELIGIBLE_WAIT_HOURS'], axis=1)
-    y_train = train_set['ELIGIBLE_WAIT_HOURS']
-
-    X_test = test_set.drop(['ELIGIBLE_WAIT_HOURS'], axis=1)
-    y_test = test_set['ELIGIBLE_WAIT_HOURS']
-    print(X_train.shape)
-    print(y_train.shape)
-
-    return train_set, test_set, X_train, y_train, X_test, y_test
-'''
 
 def split_dataset(df):
     """
@@ -280,9 +245,7 @@ def pca_feature_selection(pca, feature_names):
 
     #most contributing features in each component
     for row in range(len(loadings)):
-        # TODO: I don't think argpartition is doing the right thing here
         temp=np.argpartition(-(pca.components_[row]),4) #get the indices of the top 4 values in each row
-        # TODO: indices is not being used? 
         indices=temp[np.argsort((- pca.components_[row])[temp])][:6] #sort the indices in ascending order, view a portion
         #print(f'Component{row}: {train_set.columns[indices].to_list()}')
 
