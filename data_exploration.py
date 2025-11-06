@@ -91,7 +91,6 @@ class Job:
         job_size_runtime = {}
         job_size_walltime = {}
 
-        # TODO: there are some redundancies here with the above function
         # Calculate median RUNTIME_HOUR and WALLTIME_HOUR for each category
         job_size_runtime[self.keys[0]] = self.small_jobs_df['RUNTIME_HOURS'].median()
         job_size_walltime[self.keys[0]] = self.small_jobs_df['WALLTIME_HOURS'].median()
@@ -207,7 +206,6 @@ def get_queue_time(x, title, list_queues, list_names):
             flat_list_queues.append(q)
         dict['Wall time'] = queue['WALLTIME_HOURS'].median()
         dict['Run time'] = queue['RUNTIME_HOURS'].median()
-        # NOTE: was using 'QUEUED_WAIT_HOURS' instead of 'ELIGIBLE_WAIT_HOURS' for Polaris
         dict['Wait time'] = queue['ELIGIBLE_WAIT_HOURS'].median()
 
         list_dicts.append(dict)
